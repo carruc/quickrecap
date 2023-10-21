@@ -4,7 +4,7 @@ import openai
 from openai.error import RateLimitError
 
 
-def _get_API_key():
+def _get_api_key():
     # Chat-GPT api key request using key stored in JSON
     with open("secrets.json") as f:
         secrets = json.load(f)
@@ -80,6 +80,7 @@ def _get_abstract(filename):
             f.close()
     except RateLimitError:
         print('Debug: RateLimitError.')
+
 
 def recap(transcription_list, subject):
     openai.api_key = _get_API_key()

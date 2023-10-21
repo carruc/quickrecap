@@ -4,7 +4,15 @@ import moviepy.editor
 from pathlib import Path
 
 # supported video formats
-video_formats = ['wav', 'mp4', 'mkv', 'avi', 'mov']
+video_formats = ['mp4', 'mkv', 'avi', 'mov']
+
+# removes file extension
+def remove_file_extension(filename):
+    # Use os.path.splitext to split the filename into base and extension
+    base, extension = os.path.splitext(filename)
+
+    # Return only the base part of the filename
+    return base
 
 
 # Get a list of all the files with .mkv extension in pathdir folder.
@@ -17,8 +25,7 @@ def _get_video_list(video_dir):
 
 def _create_wav(video_filename):
     # Replace video format with .wav
-    for video_format in video_formats:
-        audio_filename = video_filename.replace(video_format, '.wav')
+    audio_filename = remove_file_extension(video_filename) + ".wav"
 
     # Path variable to check if audio exists
     path = Path(audio_filename)

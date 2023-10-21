@@ -2,7 +2,6 @@ from pathlib import Path
 import whisper
 import torch
 
-
 def _torch_init():
     # Cuda allows for the GPU to be used which is more optimized than the cpu
     if torch.cuda.is_available():
